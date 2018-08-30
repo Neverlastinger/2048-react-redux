@@ -1,4 +1,4 @@
-import { createEmptyMatrix, getStaticMatrix, move, setRandomTile } from './gridData/matrix';
+import { createEmptyMatrix, getStaticMatrix, move, setRandomTile, isMatrixFull, noLegalMoves, getPoints } from './gridData/matrix';
 import { DEFAULT_GRID_SIZE } from './gridData/default';
 
 const createDefaultState = (gridSize = DEFAULT_GRID_SIZE) => {
@@ -16,7 +16,9 @@ const createDefaultState = (gridSize = DEFAULT_GRID_SIZE) => {
 		xDirection: 0,
 		matrixInTransition,
 		matrixStatic,
-		appearingTile: null
+		appearingTile: null,
+		score: 0,
+		bestScore: 0
 	};
 }
 
@@ -50,7 +52,10 @@ const gridData = (state = Object.assign({}, createDefaultState()), action) => {
 	switch (action.type) {
 		case 'START_NEW_GAME':
 
-			return Object.assign({}, createDefaultState(action.gridSize));
+			var defaultState = createDefaultState(action.gridSize);
+			defaultState.bestScore = action.bestScore;
+
+			return Object.assign({}, defaultState);
 
 		case 'GO_LEFT':
 
@@ -104,6 +109,7 @@ const performMove = ({ state, yDirection, xDirection }) => {
 	var matrixStatic = getStaticMatrix(matrixInTransition, { yDirection, xDirection });
 
 	var appearingTile = setRandomTile(matrixStatic);
+	var score = state.score + getPoints(matrixInTransition);
 
 	return {
 		...state,
@@ -112,42 +118,10 @@ const performMove = ({ state, yDirection, xDirection }) => {
 		xDirection,
 		matrixInTransition,
 		matrixStatic,
-		appearingTile
+		appearingTile,
+		score,
+		bestScore: Math.max(state.bestScore, score)
 	};
 };
-
-const isMatrixFull = (matrix) => {
-
-	for (var y = 0; y < matrix.length; y++) {
-		if (matrix[y].some((tile) => ( tile === null ))) {
-			return false;
-		}
-	}
-
-	return true;
-};
-
-const noLegalMoves = (matrix) => {
-
-	var len = matrix.length;
-	var value = null;
-
-	const isEq = (y, x) => (
-		matrix[y] && matrix[y][x] && matrix[y][x].value === value
-	);
-
-	for (var y = 0; y < len; y++) {
-		for (var x = 0; x < len; x++) {
-
-			value = matrix[y][x].value;
-
-			if (isEq(y - 1, x) || isEq(y + 1, x) || isEq(y, x - 1) || isEq(y, x + 1)) {
-				return false;
-			}
-		}
-	}
-
-	return true;
-}
 
 export default gridData;

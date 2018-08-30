@@ -4,13 +4,15 @@ import React from 'react';
  * Represents the header of the page layout.
  *
  * @param gridSize: the size of the grid (4 by default)
+ * @param score: the current game score
+ * @param bestScore: the best score of the player
  * @param increaseGridSize: increases the grid size for the next game
  * @param decreaseGridSize: decreases the grid size for the next game
  * @param undo: performs an undo
  * @param redo: performs a redo
  * @param startNewGame: starts a new game
  */
-const Header = ({ gridSize, increaseGridSize, decreaseGridSize, undo, redo, startNewGame }) => (
+const Header = ({ gridSize, score, bestScore, increaseGridSize, decreaseGridSize, undo, redo, startNewGame }) => (
 
 	<section className="header">
 		<header>
@@ -20,11 +22,11 @@ const Header = ({ gridSize, increaseGridSize, decreaseGridSize, undo, redo, star
 		<div className="indicators">
 			<div>
 				<span>Score</span>
-				<span>0</span>
+				<span>{score}</span>
 			</div>
 			<div>
 				<span>Best</span>
-				<span>0</span>
+				<span>{bestScore}</span>
 			</div>
 		</div>
 		<div className="new-game" onClick={startNewGame}>

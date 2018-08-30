@@ -209,3 +209,68 @@ export const setRandomTile = (matrixStatic) => {
 const getRandom2or4 = () => (
 	(parseInt(Math.random() * 10, 10) % 2 + 1) * 2
 );
+
+/**
+ * Checks whether the given matrix is full with tiles (no empty spaces).
+ *
+ * @param  matrix: two dimentional array
+ * @return isFull: true|false
+ */
+export const isMatrixFull = (matrix) => {
+
+	for (var y = 0; y < matrix.length; y++) {
+		if (matrix[y].some((tile) => ( tile === null ))) {
+			return false;
+		}
+	}
+
+	return true;
+};
+
+/**
+ * Checks if there are no more legal moves the player can take according to the given matrix of tiles.
+ *
+ * @param  matrix: static matrix with tiles
+ * @return noMoves: true|false
+ */
+export const noLegalMoves = (matrix) => {
+
+	var len = matrix.length;
+	var value = null;
+
+	const isEq = (y, x) => (
+		matrix[y] && matrix[y][x] && matrix[y][x].value === value
+	);
+
+	for (var y = 0; y < len; y++) {
+		for (var x = 0; x < len; x++) {
+
+			value = matrix[y][x].value;
+
+			if (isEq(y - 1, x) || isEq(y + 1, x) || isEq(y, x - 1) || isEq(y, x + 1)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+};
+
+/**
+ * Gets the number of points scored by the given matrix
+ *
+ * @param  matrixInTransition
+ * @return points: integer
+ */
+export const getPoints = (matrixInTransition) => {
+
+	var points = 0;
+
+	matrixInTransition.forEach((row) => {
+		row.forEach((tile) => {
+			points += tile && tile.increment ? tile.value * 2 : 0;
+		})
+	});
+
+	return points;
+}

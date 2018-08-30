@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getNextGameGridSize } from '../store/queries';
+import { getNextGameGridSize, getScore, getBestScore } from '../store/queries';
 import { changeNextGameGridSize, undo, redo, startNewGame } from '../store/actions';
 import { MAX_GRID_SIZE, MIN_GRID_SIZE } from '../config/config';
 import Header from '../components/Header';
@@ -10,7 +10,9 @@ import Header from '../components/Header';
  */
 const HeaderContainer = connect(
     () => ({
-        gridSize: getNextGameGridSize()
+        gridSize: getNextGameGridSize(),
+		score: getScore(),
+		bestScore: getBestScore()
     }),
     (dispatch) => ({
 		increaseGridSize: () => {
@@ -30,7 +32,7 @@ const HeaderContainer = connect(
 			dispatch(redo());
 		},
 		startNewGame: () => {
-			dispatch(startNewGame(getNextGameGridSize()));
+			dispatch(startNewGame(getNextGameGridSize(), getBestScore()));
 		}
     })
 )(Header);

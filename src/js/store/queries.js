@@ -18,5 +18,7 @@ export const getYDirection = () => present().yDirection;
 export const getAppearingTile = () => present().appearingTile;
 export const isUndoRedo = () => store.getState().gridData.isUndoRedo;
 export const isGameOver = () => present().isGameOver;
+export const getScore = () => present().score;
+export const getBestScore = () => present().bestScore;
 
 const present = () => store.getState().gridData.present;
