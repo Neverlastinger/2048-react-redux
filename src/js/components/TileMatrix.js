@@ -3,6 +3,9 @@ import React from 'react';
 import { UP, DOWN, LEFT, RIGHT } from '../config/keyCodes';
 import Tile from './Tile';
 
+/**
+ * Represents the game board - tile matrix.
+ */
 export default class TileMatrix extends React.Component {
 
     componentDidMount() {
@@ -10,6 +13,11 @@ export default class TileMatrix extends React.Component {
 		var { onLeft, onRight, onUp, onDown } = this.props;
 
 		document.addEventListener('keyup', (e) => {
+
+			if (this.props.isGameOver) {
+				return;
+			}
+
 			if (e.keyCode === LEFT) {
 				onLeft();
 			}
@@ -27,7 +35,7 @@ export default class TileMatrix extends React.Component {
 
     render() {
 
-		var { matrixInTransition, gridSize, yDirection, xDirection, appearingTile, isUndoRedo } = this.props;
+		var { matrixInTransition, gridSize, yDirection, xDirection, appearingTile, isUndoRedo, isGameOver } = this.props;
 
 		var tiles = [];
 
@@ -55,7 +63,6 @@ export default class TileMatrix extends React.Component {
 				{tiles.map((data, y) => (
 					<Tile
 						key={data.key}
-						id={data.key}
 						value={data.value}
 						isAppearing={data.appearing}
 						steps={data.steps}

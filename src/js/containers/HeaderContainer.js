@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { getNextGameGridSize } from '../store/queries';
-import { changeNextGameGridSize, undo, redo } from '../store/actions';
+import { changeNextGameGridSize, undo, redo, startNewGame } from '../store/actions';
 import { MAX_GRID_SIZE, MIN_GRID_SIZE } from '../config/config';
 import Header from '../components/Header';
 
@@ -28,6 +28,9 @@ const HeaderContainer = connect(
 		},
 		redo: () => {
 			dispatch(redo());
+		},
+		startNewGame: () => {
+			dispatch(startNewGame(getNextGameGridSize()));
 		}
     })
 )(Header);

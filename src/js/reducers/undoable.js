@@ -2,7 +2,7 @@
  * Reducer enhancer that implements undo/redo for the given reducer.
  * https://redux.js.org/recipes/implementingundohistory
  *
- * @param  reducer: Redux reducer
+ * @param  reducer: Redux reducer to enhance
  * @return undoableReducer: a new reducer handling UNDO and REDO action types
  */
 const undoable = (reducer) => {
@@ -50,8 +50,19 @@ const undoable = (reducer) => {
 					future: newFuture,
 					isUndoRedo: true
 				};
+
+			case 'START_NEW_GAME':
+
+				return {
+					past: [],
+					present: reducer(present, action),
+					future: []
+				};
+
 			default:
+
 				const newPresent = reducer(present, action);
+				
 				if (present === newPresent) {
 					return state;
 				}

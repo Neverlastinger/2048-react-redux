@@ -8,8 +8,9 @@ import React from 'react';
  * @param decreaseGridSize: decreases the grid size for the next game
  * @param undo: performs an undo
  * @param redo: performs a redo
+ * @param startNewGame: starts a new game
  */
-const Header = ({ gridSize, increaseGridSize, decreaseGridSize, undo, redo }) => (
+const Header = ({ gridSize, increaseGridSize, decreaseGridSize, undo, redo, startNewGame }) => (
 
 	<section className="header">
 		<header>
@@ -26,9 +27,11 @@ const Header = ({ gridSize, increaseGridSize, decreaseGridSize, undo, redo }) =>
 				<span>0</span>
 			</div>
 		</div>
-		<div className="new-game">
+		<div className="new-game" onClick={startNewGame}>
 			<span>New game</span>
 			<span className="size">{gridSize}x{gridSize}</span>
+		</div>
+		<div className="game-size-buttons">
 			<span className="up" onClick={increaseGridSize}>^</span>
 			<span className="down" onClick={decreaseGridSize}>^</span>
 		</div>

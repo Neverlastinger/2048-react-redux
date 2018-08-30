@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getMatrixInTransition, getGridSize, getYDirection, getXDirection, getAppearingTile, isUndoRedo } from '../store/queries';
+import { getMatrixInTransition, getGridSize, getYDirection, getXDirection, getAppearingTile, isUndoRedo, isGameOver } from '../store/queries';
 import { goLeft, goRight, goUp, goDown } from '../store/actions';
 import TileMatrix from '../components/TileMatrix';
 
@@ -14,7 +14,8 @@ const TileMatrixContainer = connect(
 		yDirection: getYDirection(),
 		xDirection: getXDirection(),
 		appearingTile: getAppearingTile(),
-		isUndoRedo: isUndoRedo()
+		isUndoRedo: isUndoRedo(),
+		isGameOver: isGameOver()
     }),
     (dispatch) => ({
 		onLeft: () => {

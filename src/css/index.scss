@@ -64,10 +64,10 @@ h1 {
 
 		.new-game {
 			position: absolute;
-			right: 0;
+			right: 16px;
 			top: 90px;
-			padding: 6px 12px 6px 12px;
-			width: 132px;
+			padding: 6px 6px 6px 12px;
+			width: 126px;
 			background: #8f7a66;
 			color: white;
 			border-radius: 2px;
@@ -81,31 +81,42 @@ h1 {
 				&.size {
 					margin-left: 6px;
 				}
+			}
+		}
 
-				&.up,
+		.game-size-buttons {
+			position: absolute;
+			right: 0;
+			top: 90px;
+			height: 31px;
+
+			.up,
+			.down {
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 14px;
+				width: 15px;
+				height: 15px;
+				text-align: center;
+				line-height: 22px;
+				background: #8f7a66;
+				color: white;
+				border-radius: 2px;
+				cursor: pointer;
+				user-select: none;
+
 				&.down {
-					position: absolute;
-					top: 0;
-					right: 0;
-					height: 14px;
-					width: 15px;
-					height: 15px;
-					text-align: center;
-					line-height: 22px;
-					background: #4e4237;
-
-					&.down {
-						top: auto;
-						bottom: 0;
-						transform: rotate(180deg);
-					}
+					top: auto;
+					bottom: 0;
+					transform: rotate(180deg);
 				}
 			}
 		}
 
 		.undo-redo {
 			user-select: none;
-			
+
 			> div {
 				display: inline-block;
 				margin-left: 6px;
@@ -242,6 +253,24 @@ h1 {
 					color: #f9f6f2;
 					background: #000;
 				}
+			}
+		}
+
+		.game-over {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			z-index: 3;
+			background: hsla(0, 0%, 100%, 0.5);
+
+			p {
+				text-align: center;
+				color: #8f7a66;
+				font-size: 70px;
+				font-weight: bold;
+				line-height: 321px;
 			}
 		}
 	}

@@ -3,9 +3,21 @@ import React from 'react';
 import { getLeftStyleByIndex, getTopStyleByIndex, getTileSize, getTileFontSize } from '../config/config';
 
 /**
- * Renders the tile (square on the grid representing numbers).
+ * Renders the tile - a square on the grid representing a number.
+ *
+ * @param  y               y coord
+ * @param  x               x coord
+ * @param  value           the number represented by this tile
+ * @param  gridSize        the size of the grid in integer
+ * @param  isAppearing     indicates if this tile appears out of nowhere
+ * @param  shouldDestroy   indicates if this tile should be destroyed due to a merger with another one
+ * @param  shouldIncrement indicates if this tile should increase its value due to a merger with another one
+ * @param  steps           indicates how many steps, if any, this tile moves
+ * @param  yDirection      -1|0|1: the direction on the vertical axis
+ * @param  xDirection      -1|0|1: the direction on the horizontal axis
+ * @param  isUndoRedo      is undo/redo currently performing as an operation
  */
-const Tile = ({ y, x, value, gridSize, isAppearing, shouldDestroy, shouldIncrement, steps, yDirection, xDirection, isUndoRedo, id }) => {
+const Tile = ({ y, x, value, gridSize, isAppearing, shouldDestroy, shouldIncrement, steps, yDirection, xDirection, isUndoRedo }) => {
 
 	var className = `${isAppearing ? 'appearing' : ''}${steps > 0 ? ' moving' : ''}${shouldDestroy ? ' destroying' : ''}${shouldIncrement ? ' incrementing' : ''}`;
 	var tileSize = getTileSize(gridSize);
@@ -27,7 +39,7 @@ const Tile = ({ y, x, value, gridSize, isAppearing, shouldDestroy, shouldIncreme
 	var mergedValue = value * (shouldIncrement ? 2 : 1);
 
 	return (
-		<div data-key={id} className={className} data-value={mergedValue} ref={el => dom = el} style={{
+		<div className={className} data-value={mergedValue} ref={el => dom = el} style={{
 			top: getTopStyleByIndex(y + ySteps, gridSize),
 			left: getLeftStyleByIndex(x + xSteps, gridSize),
 			width: tileSize,

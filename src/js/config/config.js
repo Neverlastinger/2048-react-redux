@@ -1,5 +1,5 @@
 export const MAX_GRID_SIZE = 66;
-export const MIN_GRID_SIZE = 3;
+export const MIN_GRID_SIZE = 2;
 
 const GRID_SIZE_IN_PX = 500;
 const GRID_OFFSET_START = 24;

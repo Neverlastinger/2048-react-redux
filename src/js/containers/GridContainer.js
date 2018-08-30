@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getGridSize } from '../store/queries';
+import { getGridSize, isGameOver } from '../store/queries';
 
 import Grid from '../components/Grid';
 
@@ -9,10 +9,8 @@ import Grid from '../components/Grid';
  */
 const GridContainer = connect(
     () => ({
-        gridSize: getGridSize()
-    }),
-    (dispatch) => ({
-
+        gridSize: getGridSize(),
+		isGameOver: isGameOver()
     })
 )(Grid);
 
