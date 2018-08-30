@@ -273,4 +273,25 @@ export const getPoints = (matrixInTransition) => {
 	});
 
 	return points;
+};
+
+/**
+ * Checks if no moves are performed according to the given matrix.
+ *
+ * @param  matrixInTransition
+ * @return noMoves: true|false
+ */
+export const noMovesPerformed = (matrixInTransition) => {
+
+	var result = true;
+
+	matrixInTransition.forEach((row) => {
+		row.forEach((tile) => {
+			if (tile && tile.steps && tile.steps > 0) {
+				result = false;
+			}
+		})
+	});
+
+	return result;
 }

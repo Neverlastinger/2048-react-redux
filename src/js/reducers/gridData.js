@@ -1,4 +1,4 @@
-import { createEmptyMatrix, getStaticMatrix, move, setRandomTile, isMatrixFull, noLegalMoves, getPoints } from './gridData/matrix';
+import { createEmptyMatrix, getStaticMatrix, move, setRandomTile, isMatrixFull, noLegalMoves, getPoints, noMovesPerformed } from './gridData/matrix';
 import { DEFAULT_GRID_SIZE } from './gridData/default';
 
 const createDefaultState = (gridSize = DEFAULT_GRID_SIZE) => {
@@ -106,6 +106,11 @@ const gridData = (state = Object.assign({}, createDefaultState()), action) => {
 const performMove = ({ state, yDirection, xDirection }) => {
 
 	var matrixInTransition = move(state.matrixStatic, { yDirection, xDirection });
+
+	if (noMovesPerformed(matrixInTransition)) {
+		return state;
+	}
+
 	var matrixStatic = getStaticMatrix(matrixInTransition, { yDirection, xDirection });
 
 	var appearingTile = setRandomTile(matrixStatic);
