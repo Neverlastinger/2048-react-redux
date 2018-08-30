@@ -1,6 +1,7 @@
 // *************************
 // This file contains functions related to matrix manipulations
 // *************************
+import { v4 } from 'node-uuid';
 
 /**
  * Returns the static matrix from the given matrixInTransition.
@@ -179,8 +180,6 @@ export const createEmptyMatrix = (size) => (
 	Array(size).fill(null).map(() => Array(size).fill(null))
 );
 
-var currentKey = 1; // incrementing index; a React key used to preven React rerendering all tiles on every render
-
 /**
  * Sets a random tile with a value of 2 or 4 in a random place at the given matrix.
  *
@@ -201,7 +200,7 @@ export const setRandomTile = (matrixStatic) => {
 	}
 
 	var randomIndex = indexes[Math.floor(Math.random() * indexes.length)];
-	var tile = { value: getRandom2or4(), key: currentKey++, appearing: true, y: randomIndex[0], x: randomIndex[1] };
+	var tile = { value: getRandom2or4(), key: v4(), appearing: true, y: randomIndex[0], x: randomIndex[1] };
 	matrixStatic[randomIndex[0]][randomIndex[1]] = tile;
 
 	return tile;

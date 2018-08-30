@@ -20,8 +20,6 @@ const createDefaultState = (gridSize = DEFAULT_GRID_SIZE) => {
 	};
 }
 
-
-
 /**
  * Redux Reducer for the grid data.
  *

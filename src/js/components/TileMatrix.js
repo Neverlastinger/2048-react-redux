@@ -12,7 +12,7 @@ export default class TileMatrix extends React.Component {
 
 		var { onLeft, onRight, onUp, onDown } = this.props;
 
-		document.addEventListener('keyup', (e) => {
+		document.addEventListener('keydown', (e) => {
 
 			if (this.props.isGameOver) {
 				return;
@@ -26,16 +26,18 @@ export default class TileMatrix extends React.Component {
 			}
 			if (e.keyCode === UP) {
 				onUp();
+				e.preventDefault();
 			}
 			if (e.keyCode === DOWN) {
 				onDown();
+				e.preventDefault();
 			}
 		});
     }
 
     render() {
 
-		var { matrixInTransition, gridSize, yDirection, xDirection, appearingTile, isUndoRedo, isGameOver } = this.props;
+		var { matrixInTransition, gridSize, yDirection, xDirection, appearingTile, isUndoRedo } = this.props;
 
 		var tiles = [];
 
@@ -55,7 +57,7 @@ export default class TileMatrix extends React.Component {
 		}
 
 		tiles.sort((tile1, tile2) => {
-			return tile1.key - tile2.key;
+			return tile1.key > tile2.key ? 1 : -1;
 		})
 
         return (
