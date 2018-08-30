@@ -10,8 +10,4 @@ const App = () => (
 	</div>
 );
 
-window.addEventListener('load', function() {
-	console.log(1);
-});
-
 export default App;

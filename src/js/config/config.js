@@ -7,7 +7,7 @@ const GRID_OFFSET_START = 24;
 export const getGridConfig = (gridSize) => {
 	var offset = Math.max(2, GRID_OFFSET_START - gridSize * 2);
 	var tileSize = (GRID_SIZE_IN_PX - offset) / gridSize - offset;
-	var fontSize = Math.max(6, parseInt(tileSize / 2));
+	var fontSize = Math.max(6, parseInt(tileSize / 2, 10));
 
 	return { offset, tileSize, fontSize };
 };

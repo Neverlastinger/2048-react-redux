@@ -2,6 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: Georgia;
+	overflow: hidden;
 }
 
 h1 {
@@ -145,9 +146,73 @@ h1 {
 				white-space: nowrap;
 				font-family: sans-serif;
 				font-weight: bold;
+				color: black;
+				background: white;
+				text-shadow: 0px 0px 1px;
+				$duration: 0.25s;
+				transition: top $duration, left $duration, background $duration / 4 $duration, color $duration / 4 $duration, font-size $duration / 4 $duration;
 
 				&.appearing {
-					animation: appear 0.2s;
+					animation: appear $duration * 2;
+				}
+
+				&.moving {
+
+				}
+
+				&.destroying {
+					transition: top $duration, left $duration, transform 0s $duration, opacity 0s $duration;
+					transform: scale(0);
+					opacity: 0;
+				}
+
+				&.incrementing {
+					animation: increment $duration * 2;
+				}
+
+				&[data-value="2"] {
+					background: #eee4da;
+					color: #776e65;
+				}
+				&[data-value="4"] {
+					background: #ede0c8;
+					color: #776e65;
+				}
+				&[data-value="8"] {
+					background: #f2b179;
+					color: white;
+				}
+				&[data-value="16"] {
+					background: #f59563;
+					color: white;
+				}
+				&[data-value="32"] {
+					color: #f9f6f2;
+					background: #f67c5f;
+				}
+				&[data-value="64"] {
+					color: #f9f6f2;
+					background: #f65e3b;
+				}
+				&[data-value="128"] {
+					color: #f9f6f2;
+					background: #edcf72;
+				}
+				&[data-value="256"] {
+					color: #f9f6f2;
+					background: #edcc61;
+				}
+				&[data-value="512"] {
+					color: #f9f6f2;
+					background: #810e0e;
+				}
+				&[data-value="1024"] {
+					color: #f9f6f2;
+					background: #810e59;
+				}
+				&[data-value="2048"] {
+					color: #f9f6f2;
+					background: #000;
 				}
 			}
 		}
@@ -159,6 +224,24 @@ h1 {
 @keyframes appear {
 	from {
 		transform: scale(0);
+	}
+	50% {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+@keyframes increment {
+	from {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1);
+	}
+	75% {
+		transform: scale(1.15);
 	}
 	to {
 		transform: scale(1);

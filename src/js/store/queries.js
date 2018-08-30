@@ -10,6 +10,9 @@
 
 import store from './store';
 
-export const getGridSize = () => ( store.getState().gridData.currentSize );
-export const getNextGameGridSize = () => ( store.getState().gridData.nextGameSize );
-export const getMatrixInTransition = () => ( store.getState().gridData.matrixInTransition );
+export const getGridSize = () => store.getState().gridData.currentSize;
+export const getNextGameGridSize = () => store.getState().gridData.nextGameSize;
+export const getMatrixInTransition = () => store.getState().gridData.matrixInTransition;
+export const getXDirection = () => store.getState().gridData.xDirection;
+export const getYDirection = () => store.getState().gridData.yDirection;
+export const getAppearingTile = () => store.getState().gridData.appearingTile;

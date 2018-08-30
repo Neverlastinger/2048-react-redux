@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { getTileSize } from '../config/config';
 import GridBackground from './GridBackground';
-import GameContainer from '../containers/GameContainer';
+import TileMatrixContainer from '../containers/TileMatrixContainer';
 
 const Grid = ({ gridSize }) => {
 
@@ -11,7 +11,7 @@ const Grid = ({ gridSize }) => {
 	return (
 		<section className="grid">
 			<GridBackground gridSize={gridSize} tileSize={tileSize} />
-			<GameContainer />
+			<TileMatrixContainer />
 		</section>
 	);
 };
