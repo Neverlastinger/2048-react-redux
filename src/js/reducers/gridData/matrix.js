@@ -79,21 +79,20 @@ const processItem = (matrix, { y, x, yDirection, xDirection }) => {
 /**
  * Returns the new matrixInTransition in response to a move.
  *
- * @param  state: old (current state) before the move is implemented
+ * @param  matrixStatic: old (current matrixStatic) before the move is implemented
  * @param  direction: contains:
  * 				- yDirection: -1|0|1: the direction on the vertical axis
  * 				- xDirection: -1|0|1: the direction on the horizontal axis
  * @return matrixInTransition
  */
-export const move = (state, { yDirection, xDirection }) => {
+export const move = (matrixStatic, { yDirection, xDirection }) => {
 
 	if (yDirection !== 0) {
-		return moveVertical(state, { yDirection, xDirection });
+		return moveVertical(matrixStatic, { yDirection, xDirection });
 	}
 
-	let matrix = state.matrixStatic;
-	let matrixInTransition = JSON.parse(JSON.stringify(matrix));
-	var len = state.matrixStatic.length;
+	let matrixInTransition = JSON.parse(JSON.stringify(matrixStatic));
+	var len = matrixInTransition.length;
 
 	for (var y = 0; y < len; y++) {
 
@@ -130,11 +129,10 @@ export const move = (state, { yDirection, xDirection }) => {
 	return matrixInTransition;
 };
 
-const moveVertical = (state, { yDirection, xDirection }) => {
+const moveVertical = (matrixStatic, { yDirection, xDirection }) => {
 
-	let matrix = state.matrixStatic;
-	let matrixInTransition = JSON.parse(JSON.stringify(matrix));
-	var len = state.matrixStatic.length;
+	let matrixInTransition = JSON.parse(JSON.stringify(matrixStatic));
+	var len = matrixInTransition.length;
 
 	for (var x = 0; x < len; x++) {
 

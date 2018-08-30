@@ -30,14 +30,14 @@ const defaultState = {
  * 		- matrixInTransition: represents a single move from one state to another. This matrix is used mainly to display animations.
  * 			It is provided to the view and changes every turn based on the matrixStatic.
  * 			After a given tile has been moved, it can be found by its old index here, but with a property indicating the change.
- * 			The same goes for tiles that should be merged with other tiles and consequently destroyed;
+ * 			The same goes for tiles that should be merged with other tiles and consequently increased in value destroyed;
  * 		- matrixStatic: normalized matrix used every turn to create the matrixInTransition. Tiles can be found here by its new index
  *
  * A given tile is represented as an object and it can have the following properties:
  * 		- x, y: the coordinates on the grid, although indexes of the two matrixes are used more often. These properties are used only for the new, appearing tiles;
  * 		- key: unique id of every tile. Necessary to prevent React of rerendering every tile on every render
  * 		- value: the numerical value of the tile: 2, 4, 8, ...
- * 		- increment: true|undefined - indicates if the tile should be merged with another one and incremented
+ * 		- increment: true|undefined - indicates if the tile should be merged with another one and increased in value
  * 		- destroy: true|undefined - indicates if the tile should be merged with another one and removed entirely
  * 		- appearing: true|undefined - indicates if this is a new tile emerging from nowhere to the grid
  */
@@ -56,75 +56,63 @@ const gridData = (state = Object.assign({}, defaultState), action) => {
 			};
 		case 'GO_LEFT':
 
-			var yDirection = 0;
-			var xDirection = -1;
-
-			var matrixInTransition = move(state, { yDirection, xDirection });
-			var matrixStatic = getStaticMatrix(matrixInTransition, { yDirection, xDirection });
-
-			return {
-				...state,
-				yDirection,
-				xDirection,
-				matrixInTransition,
-				matrixStatic,
-				appearingTile: setRandomTile(matrixStatic)
-			};
+			return performMove({
+				state,
+				yDirection: 0,
+				xDirection: -1
+			});
 
 		case 'GO_RIGHT':
 
-			var yDirection = 0;
-			var xDirection = 1;
-
-			var matrixInTransition = move(state, { yDirection, xDirection });
-			var matrixStatic = getStaticMatrix(matrixInTransition, { yDirection, xDirection });
-
-			return {
-				...state,
-				yDirection,
-				xDirection,
-				matrixInTransition,
-				matrixStatic,
-				appearingTile: setRandomTile(matrixStatic)
-			};
+			return performMove({
+				state,
+				yDirection: 0,
+				xDirection: 1
+			});
 
 		case 'GO_UP':
 
-			var yDirection = -1;
-			var xDirection = 0;
-
-			var matrixInTransition = move(state, { yDirection, xDirection });
-			var matrixStatic = getStaticMatrix(matrixInTransition, { yDirection, xDirection });
-
-			return {
-				...state,
-				yDirection,
-				xDirection,
-				matrixInTransition,
-				matrixStatic,
-				appearingTile: setRandomTile(matrixStatic)
-			};
+			return performMove({
+				state,
+				yDirection: -1,
+				xDirection: 0
+			});
 
 		case 'GO_DOWN':
 
-			var yDirection = 1;
-			var xDirection = 0;
-
-			var matrixInTransition = move(state, { yDirection, xDirection });
-			var matrixStatic = getStaticMatrix(matrixInTransition, { yDirection, xDirection });
-
-			return {
-				...state,
-				yDirection,
-				xDirection,
-				matrixInTransition,
-				matrixStatic,
-				appearingTile: setRandomTile(matrixStatic)
-			};
+			return performMove({
+				state,
+				yDirection: 1,
+				xDirection: 0
+			});
 
         default:
             return state;
     }
 }
+
+/**
+ * Returns the new redux reducer state based on the direction of move.
+ *
+ * @param  params:
+ * 				- state: the old redux reducer state
+ * 				- yDirection: -1|0|1: the direction on the vertical axis
+ * 				- xDirection: -1|0|1: the direction on the horizontal axis
+ * @return state: the new state
+ */
+const performMove = ({ state, yDirection, xDirection }) => {
+
+	var matrixInTransition = move(state.matrixStatic, { yDirection, xDirection });
+	var matrixStatic = getStaticMatrix(matrixInTransition, { yDirection, xDirection });
+
+	return {
+		...state,
+		yDirection,
+		xDirection,
+		matrixInTransition,
+		matrixStatic,
+		appearingTile: setRandomTile(matrixStatic)
+	};
+};
 
 export default gridData;
