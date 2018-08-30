@@ -245,8 +245,8 @@ const gridData = (state = Object.assign({}, defaultState), action) => {
 const move = (state, yDirection, xDirection) => {
 
 	let matrix = state.matrixStatic;
-	var len = state.matrixStatic.length;
 	let matrixInTransition = JSON.parse(JSON.stringify(matrix));
+	var len = state.matrixStatic.length;
 
 	for (var _y = 0; _y < len; _y++) {
 
