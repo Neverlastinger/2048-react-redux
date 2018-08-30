@@ -2,7 +2,7 @@
 
 > - Install node.js
 > - Run ```npm install``` to download dependencies
-> - Run ```npm start``` to load the game in the browser
+> - Run ```npm start``` to load the game on http://localhost:3000/
 > - Run ```npm test``` to run tests
 
 ## Notes
