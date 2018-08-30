@@ -102,6 +102,34 @@ h1 {
 				}
 			}
 		}
+
+		.undo-redo {
+			user-select: none;
+			
+			> div {
+				display: inline-block;
+				margin-left: 6px;
+				padding: 6px 12px;
+				background: #bbada0;
+				color: white;
+				border-radius: 2px;
+				cursor: pointer;
+
+				span {
+					display: block;
+					text-align: center;
+
+					&:first-child {
+						opacity: 0.75;
+						font-size: 12px;
+					}
+
+					&:last-child {
+						font-size: 26px;
+					}
+				}
+			}
+		}
 	}
 
 	.grid {

@@ -1,6 +1,5 @@
 import { createEmptyMatrix, getStaticMatrix, move, setRandomTile } from './gridData/matrix';
-
-const DEFAULT_GRID_SIZE = 4;
+import { DEFAULT_GRID_SIZE } from './gridData/default';
 
 var matrixInTransition = createEmptyMatrix(DEFAULT_GRID_SIZE);
 var matrixStatic = getStaticMatrix(matrixInTransition, { yDirection: 0, xDirection: 0 });
@@ -10,8 +9,7 @@ tile = setRandomTile(matrixStatic);
 matrixInTransition[tile.y][tile.x] = tile;
 
 const defaultState = {
-	nextGameSize: DEFAULT_GRID_SIZE,
-	currentSize: DEFAULT_GRID_SIZE,
+	gridSize: DEFAULT_GRID_SIZE,
 	yDirection: 0,
 	xDirection: 0,
 	matrixInTransition,
@@ -44,16 +42,6 @@ const defaultState = {
 const gridData = (state = Object.assign({}, defaultState), action) => {
 
 	switch (action.type) {
-		case 'CHANGE_GRID_SIZE':
-			return {
-				...state,
-				currentSize: action.size
-			};
-		case 'CHANGE_NEXT_GAME_SIZE':
-			return {
-				...state,
-				nextGameSize: action.size
-			};
 		case 'GO_LEFT':
 
 			return performMove({

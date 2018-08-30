@@ -27,7 +27,7 @@ export default class TileMatrix extends React.Component {
 
     render() {
 
-		var { matrixInTransition, gridSize, yDirection, xDirection, appearingTile } = this.props;
+		var { matrixInTransition, gridSize, yDirection, xDirection, appearingTile, isUndoRedo } = this.props;
 
 		var tiles = [];
 
@@ -55,6 +55,7 @@ export default class TileMatrix extends React.Component {
 				{tiles.map((data, y) => (
 					<Tile
 						key={data.key}
+						id={data.key}
 						value={data.value}
 						isAppearing={data.appearing}
 						steps={data.steps}
@@ -64,33 +65,10 @@ export default class TileMatrix extends React.Component {
 						x={data.x}
 						yDirection={yDirection}
 						xDirection={xDirection}
-						gridSize={gridSize} />
+						gridSize={gridSize}
+						isUndoRedo={isUndoRedo} />
 				))}
 			</div>
 		)
     }
 };
-
-// const TileMatrix = ({ matrixInTransition, gridSize }) => (
-//
-// 	<div className="game-layer">
-// 		{matrixInTransition.map((row, x) =>
-// 			row.map((data, y) => {
-// 				if (data === undefined) {
-// 					return null;
-// 				}
-// 				return (
-// 					<Tile
-// 						key={data.key}
-// 						value={data.value}
-// 						isAppearing={data.appearing}
-// 						x={x}
-// 						y={y}
-// 						gridSize={gridSize} />
-// 				);
-// 			})
-// 		)}
-// 	</div>
-// );
-//
-// export default TileMatrix;

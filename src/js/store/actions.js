@@ -10,3 +10,5 @@ export const goLeft = () => ({ type: 'GO_LEFT' });
 export const goRight = () => ({ type: 'GO_RIGHT' });
 export const goUp = () => ({ type: 'GO_UP' });
 export const goDown = () => ({ type: 'GO_DOWN' });
+export const undo = () => ({ type: 'UNDO' });
+export const redo = () => ({ type: 'REDO' });

@@ -1,6 +1,15 @@
 import React from 'react';
 
-const Header = ({ gridSize, increaseGridSize, decreaseGridSize }) => (
+/**
+ * Represents the header of the page layout.
+ *
+ * @param gridSize: the size of the grid (4 by default)
+ * @param increaseGridSize: increases the grid size for the next game
+ * @param decreaseGridSize: decreases the grid size for the next game
+ * @param undo: performs an undo
+ * @param redo: performs a redo
+ */
+const Header = ({ gridSize, increaseGridSize, decreaseGridSize, undo, redo }) => (
 
 	<section className="header">
 		<header>
@@ -22,6 +31,10 @@ const Header = ({ gridSize, increaseGridSize, decreaseGridSize }) => (
 			<span className="size">{gridSize}x{gridSize}</span>
 			<span className="up" onClick={increaseGridSize}>^</span>
 			<span className="down" onClick={decreaseGridSize}>^</span>
+		</div>
+		<div className="undo-redo">
+			<div className="undo" onClick={undo}>Undo</div>
+			<div className="redo" onClick={redo}>Redo</div>
 		</div>
 	</section>
 );

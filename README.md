@@ -6,4 +6,4 @@
 > - Run ```npm test``` to run tests
 
 ## Notes
-https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc
+Built with [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app). Added Redux and [sass](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc). 
