@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { UP, DOWN, LEFT, RIGHT } from '../config/keyCodes';
+import Swipe from '../core/Swipe';
 import Tile from './Tile';
 
 /**
@@ -33,6 +34,8 @@ export default class TileMatrix extends React.Component {
 				e.preventDefault();
 			}
 		});
+
+		Swipe(document, { onLeft, onRight, onUp, onDown });
     }
 
     render() {

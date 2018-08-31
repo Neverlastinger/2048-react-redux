@@ -1,8 +1,10 @@
-body {
+html, body {
 	margin: 0;
 	padding: 0;
+	width: 100%;
+	height: 100%;
 	font-family: Georgia;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 h1 {
@@ -64,20 +66,25 @@ h1 {
 		}
 
 		.new-game {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 			position: absolute;
-			right: 16px;
-			top: 142px;
-			padding: 6px 6px 6px 12px;
-			width: 126px;
+			right: 62px;
+			top: 90px;
+			width: 150px;
+			height: 90px;
 			background: #bbada0;
 			color: white;
+			font-size: 24px;
 			border-radius: 2px;
+			text-align: center;
 			cursor: pointer;
 			user-select: none;
 			white-space: nowrap;
 
 			span {
-				display: inline-block;
+				display: block;
 
 				&.size {
 					margin-left: 6px;
@@ -88,21 +95,21 @@ h1 {
 		.game-size-buttons {
 			position: absolute;
 			right: 0;
-			top: 142px;
-			height: 31px;
+			top: 90px;
+			height: 90px;
 
 			.up,
 			.down {
 				position: absolute;
 				top: 0;
 				right: 0;
-				height: 14px;
-				width: 15px;
-				height: 15px;
+				width: 60px;
+				height: 44px;
+				line-height: 51px;
 				text-align: center;
-				line-height: 22px;
 				background: #bbada0;
 				color: white;
+				font-size: 22px;
 				border-radius: 2px;
 				cursor: pointer;
 				user-select: none;
