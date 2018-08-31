@@ -2,6 +2,7 @@
 // This file contains functions related to matrix manipulations
 // *************************
 import { v4 } from 'node-uuid';
+import { fill } from 'array.prototype.fill';
 
 /**
  * Returns the static matrix from the given matrixInTransition.
