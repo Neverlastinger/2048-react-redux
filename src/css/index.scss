@@ -2,6 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: Georgia;
+	overflow-x: hidden;
 }
 
 h1 {
@@ -10,9 +11,10 @@ h1 {
 }
 
 .app {
-	padding: 30px;
+	padding: 30px 6px;
 	width: 500px;
 	margin: 0 auto;
+	transform-origin: top left;
 
 	.header {
 		position: relative;
@@ -301,5 +303,21 @@ h1 {
 	}
 	to {
 		transform: scale(1);
+	}
+}
+
+@media (max-width: 512px) {
+	.app {
+		transform: scale(0.85);
+	}
+}
+@media (max-width: 435px) {
+	.app {
+		transform: scale(0.65);
+	}
+}
+@media (max-width: 333px) {
+	.app {
+		transform: scale(0.55);
 	}
 }
