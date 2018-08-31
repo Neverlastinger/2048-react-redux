@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { getNextGameGridSize, getScore, getBestScore } from '../store/queries';
 import { changeNextGameGridSize, undo, redo, startNewGame } from '../store/actions';
-import { MAX_GRID_SIZE, MIN_GRID_SIZE } from '../config/config';
+import { MAX_GRID_SIZE, MIN_GRID_SIZE } from '../config/ui';
 import Header from '../components/Header';
 
 /**

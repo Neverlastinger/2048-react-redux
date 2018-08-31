@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getTileSize } from '../config/config';
+import { getTileSize } from '../config/ui';
 import GridBackground from './GridBackground';
 import GameOverLayer from './GameOverLayer';
 import YouWinLayerContainer from '../containers/YouWinLayerContainer';

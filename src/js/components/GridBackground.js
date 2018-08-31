@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getLeftStyleByIndex, getTopStyleByIndex } from '../config/config';
+import { getLeftStyleByIndex, getTopStyleByIndex } from '../config/ui';
 
 /**
  * Renders the grid background (empty squares).

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getLeftStyleByIndex, getTopStyleByIndex, getTileSize, getTileFontSize } from '../config/config';
+import { getLeftStyleByIndex, getTopStyleByIndex, getTileSize, getTileFontSize } from '../config/ui';
 
 /**
  * Renders the tile - a square on the grid representing a number.

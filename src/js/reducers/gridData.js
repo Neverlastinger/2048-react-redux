@@ -19,6 +19,7 @@ const createDefaultState = (gridSize = DEFAULT_GRID_SIZE) => {
 		appearingTile: null,
 		score: 0,
 		bestScore: 0,
+		isGameOver: false,
 		youWin: false,
 		continuePlaying: false
 	};

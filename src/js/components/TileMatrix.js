@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { UP, DOWN, LEFT, RIGHT } from '../config/keyCodes';
+import { UP, DOWN, LEFT, RIGHT } from '../core/keyCodes';
 import Swipe from '../core/Swipe';
 import Tile from './Tile';
 
