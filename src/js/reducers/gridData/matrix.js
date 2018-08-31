@@ -295,3 +295,21 @@ export const noMovesPerformed = (matrixInTransition) => {
 
 	return result;
 }
+
+/**
+ * Checks whether the win condition is present in the given matrix.
+ * @param  matrix: staticMatrix
+ * @return win: true|false
+ */
+export const isWinCondition = (matrix) => {
+
+	var win = false;
+
+	matrix.forEach((row) => {
+		if (row.some((tile) => ( tile && tile.value === 2048 ))) {
+			win = true;
+		}
+	});
+
+	return win;
+}

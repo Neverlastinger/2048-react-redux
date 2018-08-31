@@ -15,10 +15,6 @@ export default class TileMatrix extends React.Component {
 
 		document.addEventListener('keydown', (e) => {
 
-			if (this.props.isGameOver) {
-				return;
-			}
-
 			if (e.keyCode === LEFT) {
 				onLeft();
 			}

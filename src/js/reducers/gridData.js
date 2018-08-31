@@ -1,4 +1,4 @@
-import { createEmptyMatrix, getStaticMatrix, move, setRandomTile, isMatrixFull, noLegalMoves, getPoints, noMovesPerformed } from './gridData/matrix';
+import { createEmptyMatrix, getStaticMatrix, move, setRandomTile, isMatrixFull, noLegalMoves, getPoints, noMovesPerformed, isWinCondition } from './gridData/matrix';
 import { DEFAULT_GRID_SIZE } from './gridData/default';
 
 const createDefaultState = (gridSize = DEFAULT_GRID_SIZE) => {
@@ -18,7 +18,9 @@ const createDefaultState = (gridSize = DEFAULT_GRID_SIZE) => {
 		matrixStatic,
 		appearingTile: null,
 		score: 0,
-		bestScore: 0
+		bestScore: 0,
+		youWin: false,
+		continuePlaying: false
 	};
 }
 
@@ -35,6 +37,8 @@ const createDefaultState = (gridSize = DEFAULT_GRID_SIZE) => {
  * 			After a given tile has been moved, it can be found by its old index here, but with a property indicating the change.
  * 			The same goes for tiles that should be merged with other tiles and consequently increased in value destroyed;
  * 		- matrixStatic: normalized matrix used every turn to create the matrixInTransition. Tiles can be found here by its new index
+ * - Player's scores
+ * - Win conditions
  *
  * A given tile is represented as an object and it can have the following properties:
  * 		- x, y: the coordinates on the grid, although indexes of the two matrixes are used more often. These properties are used only for the new, appearing tiles;
@@ -56,6 +60,14 @@ const gridData = (state = Object.assign({}, createDefaultState()), action) => {
 			defaultState.bestScore = action.bestScore;
 
 			return Object.assign({}, defaultState);
+
+		case 'CONTINUE_PLAYING':
+
+			return {
+				...state,
+				youWin: false,
+				continuePlaying: true
+			}
 
 		case 'GO_LEFT':
 
@@ -119,6 +131,7 @@ const performMove = ({ state, yDirection, xDirection }) => {
 	return {
 		...state,
 		isGameOver: isMatrixFull(matrixStatic) && noLegalMoves(matrixStatic),
+		youWin: !state.continuePlaying && isWinCondition(matrixStatic),
 		yDirection,
 		xDirection,
 		matrixInTransition,

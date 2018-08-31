@@ -13,3 +13,4 @@ export const goDown = () => ({ type: 'GO_DOWN' });
 export const undo = () => ({ type: 'UNDO' });
 export const redo = () => ({ type: 'REDO' });
 export const startNewGame = (gridSize, bestScore) => ({ type: 'START_NEW_GAME', gridSize, bestScore });
+export const continuePlaying = () => ({ type: 'CONTINUE_PLAYING' });

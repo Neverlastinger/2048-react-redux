@@ -264,7 +264,7 @@ h1 {
 			}
 		}
 
-		.game-over {
+		.overlay {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -279,6 +279,19 @@ h1 {
 				font-size: 70px;
 				font-weight: bold;
 				line-height: 321px;
+			}
+
+			.continue {
+				position: relative;
+				top: -180px;
+				margin: 0 auto;
+				width: 106px;
+				line-height: 27px;
+				text-align: center;
+			    background: #bbada0;
+			    color: white;
+			    border-radius: 2px;
+			    cursor: pointer;
 			}
 		}
 	}

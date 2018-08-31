@@ -20,5 +20,6 @@ export const isUndoRedo = () => store.getState().gridData.isUndoRedo;
 export const isGameOver = () => present().isGameOver;
 export const getScore = () => present().score;
 export const getBestScore = () => present().bestScore;
+export const getYouWin = () => present().youWin;
 
 const present = () => store.getState().gridData.present;

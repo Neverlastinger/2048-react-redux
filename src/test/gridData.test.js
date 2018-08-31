@@ -89,5 +89,35 @@ it('merges tiles correctly when moving to the left', () => {
 	expect(state.matrixStatic[1][0].value).toEqual(32);
 });
 
+it('doesnt win if 2048 is not present', () => {
+
+	const initialState = {
+		matrixStatic: [
+			[ { value: 2 }, null, { value: 2 } ],
+			[ null, { value: 16 }, { value: 16 } ],
+			[ null, null, null ]
+		]
+	};
+
+	var state = gridData(initialState, goLeft());
+
+	expect(state.youWin).toEqual(false);
+});
+
+it('wins if 2048 is there', () => {
+
+	const initialState = {
+		matrixStatic: [
+			[ { value: 2 }, null, { value: 2 } ],
+			[ null, { value: 1024 }, { value: 1024 } ],
+			[ null, null, null ]
+		]
+	};
+
+	var state = gridData(initialState, goLeft());
+
+	expect(state.youWin).toEqual(true);
+});
+
 const isEmptyOrAppearing = (tile) => ( tile === null || tile.appearing === true );
 const expectEmptyOrAppearing = (tile) => { expect(isEmptyOrAppearing(tile)).toBe(true); }
